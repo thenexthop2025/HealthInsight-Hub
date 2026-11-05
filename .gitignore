@@ -1,0 +1,114 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Database
+*.db
+*.db.bak
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/*.db.bak
+
+# Test data and reports
+backend/generated_reports/*.pdf
+backend/generated_reports/*.docx
+backend/uploads/*
+!backend/uploads/.gitkeep
+!backend/uploads/avatars/
+backend/uploads/avatars/*
+!backend/uploads/avatars/.gitkeep
+uploads/
+
+# Config caches
+backend/config/*_cache.json
+backend/config/last_update_times.json
+backend/config/field_counts.json
+backend/config/record_counts.json
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Node
+frontend/node_modules/
+frontend/build/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.hypothesis/
+
+# Docker (development only)
+docker-compose.override.yml

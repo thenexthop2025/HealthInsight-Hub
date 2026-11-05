@@ -1,0 +1,53 @@
+{
+  "who_gho_hcf_no_electricity": {
+    "params": {
+      "time_condition": "equals",
+      "time_value": "2018"
+    },
+    "updated_at": "2025-10-11T01:45:36.859470",
+    "updated_by": "admin"
+  },
+  "who_gho_hiv_0000000006": {
+    "params": {
+      "TimeDimensionValue_condition": "equals",
+      "TimeDimensionValue_value": "2018"
+    },
+    "updated_at": "2025-10-08T09:33:07.308098",
+    "updated_by": "admin"
+  },
+  "who_gho_hiv_0000000023": {
+    "params": {
+      "time_condition": "equals",
+      "time_value": "2009"
+    },
+    "updated_at": "2025-10-08T09:40:53.911612",
+    "updated_by": "admin"
+  },
+  "who_gho_hiv_0000000008": {
+    "params": {
+      "Id_condition": "equals"
+    },
+    "updated_at": "2025-10-11T03:35:39.223242",
+    "updated_by": "admin"
+  },
+  "who_gho_hiv_0000000012": {
+    "params": {},
+    "updated_at": "2025-10-11T06:34:21.499663",
+    "updated_by": "admin"
+  },
+  "who_gho_hiv_0000000021": {
+    "params": {},
+    "updated_at": "2025-10-11T12:18:53.330420",
+    "updated_by": "admin"
+  },
+  "who_gho_hiv_0000000009": {
+    "params": {},
+    "updated_at": "2025-10-20T08:50:37.775828",
+    "updated_by": "admin"
+  },
+  "who_gho_finprotection_cata_tot_25_level_million": {
+    "params": {},
+    "updated_at": "2025-10-20T10:14:48.542048",
+    "updated_by": "admin"
+  }
+}

@@ -1,0 +1,199 @@
+.preprocessing-card > .ant-card-head {
+  background: linear-gradient(135deg, rgba(31, 79, 255, 0.92), rgba(76, 224, 210, 0.85)) !important;
+  padding-bottom: 12px !important;
+}
+
+.preprocessing-card > .ant-card-head-title {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff !important;
+  font-weight: 900 !important;
+}
+
+/* 确保嵌套的 page-section-card 有蓝色渐变背景 */
+.preprocessing-card .page-section-card .ant-card-head {
+  background: linear-gradient(135deg, rgba(31, 79, 255, 0.92), rgba(76, 224, 210, 0.85)) !important;
+}
+
+.preprocessing-card .page-section-card .ant-card-head-title {
+  color: #fff !important;
+  font-weight: 900 !important;
+}
+
+.preprocessing-form__hint {
+  color: var(--brand-muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.preprocessing-form__actions {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.preprocessing-selection {
+  border: 1px solid rgba(31, 79, 255, 0.18);
+  border-radius: 24px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.92);
+  margin-top: 12px;
+}
+
+.preprocessing-selection__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.preprocessing-selection__pill {
+  border-radius: 999px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, rgba(31, 79, 255, 0.92), rgba(76, 224, 210, 0.85));
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(31, 79, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.preprocessing-selection__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--brand-muted);
+}
+
+.preprocessing-selected-dataset {
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.preprocessing-selected-dataset strong {
+  color: #fff;
+}
+
+.preprocessing-modal .ant-modal-header {
+  background: linear-gradient(135deg, #1f4fff 0%, #6aa5ff 100%) !important;
+}
+
+.preprocessing-modal .ant-modal-body {
+  background: linear-gradient(160deg, rgba(244, 248, 255, 0.95), rgba(220, 243, 255, 0.9));
+}
+
+.preprocessing-modal__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.preprocessing-modal__title-icon {
+  font-size: 26px;
+  color: #ffd066;
+}
+
+.preprocessing-tabs {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 16px 12px;
+  box-shadow: inset 0 0 0 1px rgba(31, 79, 255, 0.08);
+}
+
+.preprocessing-tabs .ant-tabs-nav {
+  margin-bottom: 12px;
+}
+
+.preprocessing-tabs .ant-tabs-tab {
+  padding: 10px 18px !important;
+  border-radius: 14px !important;
+}
+
+.preprocessing-summary-table .ant-table-body {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.preprocessing-empty-state {
+  padding: 24px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(31, 79, 255, 0.06);
+  color: var(--brand-muted);
+}
+
+.preprocessing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(31, 79, 255, 0.12);
+  color: var(--brand-blue);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.preprocessing-recommendation {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--brand-text);
+}
+
+.preprocessing-modal__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.preprocessing-modal__count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-muted);
+}
+
+.preprocessing-modal__nav {
+  display: flex;
+  gap: 8px;
+}
+
+.preprocessing-modal__nav .ant-btn {
+  border: none !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  box-shadow: 0 10px 24px rgba(21, 32, 80, 0.12) !important;
+  color: var(--brand-blue) !important;
+}
+
+.preprocessing-chart-switcher__wrap {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.preprocessing-chart-switcher {
+  width: 260px;
+}
+
+.preprocessing-card__meta {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--brand-text);
+}
+
+.preprocessing-card__meta p {
+  margin-bottom: 8px;
+}

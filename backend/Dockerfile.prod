@@ -1,0 +1,39 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Set environment variables
+# Prevents Python from writing pyc files to disc
+ENV PYTHONDONTWRITEBYTECODE 1
+# Ensures Python output is sent straight to the terminal without buffering
+ENV PYTHONUNBUFFERED 1
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Create a non-root user and group
+RUN addgroup --system app && adduser --system --group app
+
+# Install dependencies
+# Copy only the requirements file to leverage Docker cache
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Make start.sh executable
+RUN chmod +x start.sh
+
+# Change the owner of the /app directory to the non-root user
+RUN chown -R app:app /app
+
+# Switch to the non-root user
+USER app
+
+# Expose API port
+EXPOSE 8000
+
+# Initialize database (if needed) then start uvicorn
+CMD ["./start.sh"]
+

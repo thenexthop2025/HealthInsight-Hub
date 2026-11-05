@@ -1,0 +1,183 @@
+{
+  "who_gho": {
+    "id": "who_gho",
+    "name": "WHO Global Health Observatory",
+    "description": "WHO全球健康观察站API",
+    "category": "Health",
+    "source": "WHO",
+    "api_type": "REST",
+    "base_url": "https://ghoapi.azureedge.net/api",
+    "endpoint": "{indicator_code}",
+    "method": "GET",
+    "headers": null,
+    "timeout": 30,
+    "auth": {
+      "auth_type": "none",
+      "username": null,
+      "password": null,
+      "token": null,
+      "api_key": null,
+      "api_key_header": "X-API-Key",
+      "api_key_param": null,
+      "oauth2_client_id": null,
+      "oauth2_client_secret": null,
+      "oauth2_token_url": null,
+      "oauth2_auth_url": null,
+      "custom_auth_func": null
+    },
+    "field_mappings": [
+      {
+        "api_field": "SpatialDim",
+        "standard_field": "country_code",
+        "field_type": "string",
+        "required": true,
+        "default_value": null,
+        "transform": null
+      },
+      {
+        "api_field": "ParentLocation",
+        "standard_field": "region",
+        "field_type": "string",
+        "required": false,
+        "default_value": null,
+        "transform": null
+      },
+      {
+        "api_field": "TimeDim",
+        "standard_field": "time",
+        "field_type": "integer",
+        "required": true,
+        "default_value": null,
+        "transform": null
+      },
+      {
+        "api_field": "Dim1",
+        "standard_field": "sex",
+        "field_type": "string",
+        "required": false,
+        "default_value": null,
+        "transform": null
+      },
+      {
+        "api_field": "NumericValue",
+        "standard_field": "numeric_value",
+        "field_type": "float",
+        "required": true,
+        "default_value": null,
+        "transform": null
+      },
+      {
+        "api_field": "Value",
+        "standard_field": "display_value",
+        "field_type": "string",
+        "required": false,
+        "default_value": null,
+        "transform": null
+      }
+    ],
+    "filters": [
+      {
+        "name": "country",
+        "display_name": "Country",
+        "field_type": "string",
+        "filter_type": "in",
+        "api_field": "SpatialDim",
+        "required": false,
+        "standard_field": null,
+        "odata_field": null,
+        "options": null,
+        "range_min": null,
+        "range_max": null,
+        "custom_logic": null
+      },
+      {
+        "name": "year",
+        "display_name": "Year",
+        "field_type": "integer",
+        "filter_type": "range",
+        "api_field": "TimeDim",
+        "required": false,
+        "standard_field": null,
+        "odata_field": null,
+        "options": null,
+        "range_min": 2000.0,
+        "range_max": 2024.0,
+        "custom_logic": null
+      },
+      {
+        "name": "sex",
+        "display_name": "Sex",
+        "field_type": "string",
+        "filter_type": "in",
+        "api_field": "Dim1",
+        "required": false,
+        "standard_field": null,
+        "odata_field": null,
+        "options": [
+          {
+            "value": "SEX_MLE",
+            "label": "Male"
+          },
+          {
+            "value": "SEX_FMLE",
+            "label": "Female"
+          },
+          {
+            "value": "SEX_BTSX",
+            "label": "Both sexes"
+          }
+        ],
+        "range_min": null,
+        "range_max": null,
+        "custom_logic": null
+      },
+      {
+        "name": "region",
+        "display_name": "Region",
+        "field_type": "string",
+        "filter_type": "in",
+        "api_field": "ParentLocation",
+        "required": false,
+        "standard_field": null,
+        "odata_field": null,
+        "options": [
+          {
+            "value": "Africa",
+            "label": "Africa"
+          },
+          {
+            "value": "Americas",
+            "label": "Americas"
+          },
+          {
+            "value": "Eastern Mediterranean",
+            "label": "Eastern Mediterranean"
+          },
+          {
+            "value": "Europe",
+            "label": "Europe"
+          },
+          {
+            "value": "South-East Asia",
+            "label": "South-East Asia"
+          },
+          {
+            "value": "Western Pacific",
+            "label": "Western Pacific"
+          }
+        ],
+        "range_min": null,
+        "range_max": null,
+        "custom_logic": null
+      }
+    ],
+    "supports_pagination": true,
+    "page_size_param": "$top",
+    "page_offset_param": "$skip",
+    "count_param": "$count",
+    "max_page_size": 1000,
+    "cache_duration": 300,
+    "data_processor": null,
+    "response_parser": null
+  }
+}

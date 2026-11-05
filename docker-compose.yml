@@ -1,0 +1,106 @@
+# Docker Compose - 本地部署
+# 核心服务：PostgreSQL + Backend + Frontend
+# 使用 FastAPI BackgroundTasks 处理异步任务，无需 Redis / Celery / 云服务
+
+services:
+  # PostgreSQL 数据库
+  postgres:
+    image: postgres:15
+    container_name: disease_analysis_db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - disease_analysis_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 后端 API 服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: disease_analysis_backend
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - SECRET_KEY=${SECRET_KEY}
+      - TZ=${TZ}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - uploads_data:/app/uploads
+      - reports_data:/app/generated_reports
+    networks:
+      - disease_analysis_network
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 前端 React 应用
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: disease_analysis_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - disease_analysis_network
+    environment:
+      - TZ=${TZ}
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  uploads_data:
+  reports_data:
+
+networks:
+  disease_analysis_network:
+    driver: bridge
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 说明
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# 核心服务配置：
+#   ✅ PostgreSQL - 数据存储
+#   ✅ Backend API - FastAPI 应用（使用 BackgroundTasks 处理异步任务）
+#   ✅ Frontend - React 应用
+#
+# 启动命令：
+#   docker compose up -d
+#   或使用：./start.sh
+#
+# 停止命令：
+#   docker compose down
+#
+# 查看日志：
+#   docker compose logs -f backend
+#   docker compose logs -f frontend
+#
+# ═══════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,41 @@
+# Stage 1: Build the React application
+# Use an official Node.js image as the base. Alpine versions are lightweight.
+FROM node:18-alpine AS builder
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to leverage Docker cache
+COPY package.json package-lock.json ./
+
+# Install dependencies using 'npm ci' which is faster and safer for production builds
+RUN npm ci
+
+# Copy the rest of the application source code
+COPY . .
+
+# Accept build-time environment variables
+# These will be embedded in the static build
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
+# Build the application for production
+# This creates an optimized static build in the /app/build folder
+RUN npm run build
+
+
+# Stage 2: Serve the application with Nginx
+# Use a lightweight Nginx image
+FROM nginx:stable-alpine
+
+# Copy the optimized build output from the 'builder' stage
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Copy the custom Nginx configuration we created
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80, which is the default port for Nginx
+EXPOSE 80
+
+# The default command to start Nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
